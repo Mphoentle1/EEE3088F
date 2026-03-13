@@ -1,0 +1,7 @@
+.subckt ideal_opamp IN_P IN_N V_POS V_NEG OUT
+R_IN IN_P IN_N 10Meg
+B_INTERNAL NODE_A 0 V=LIMIT(1000000 * (V(IN_P) - V(IN_N)), -10, 10)
+R_SMOOTH NODE_A NODE_B 1k
+C_SMOOTH NODE_B 0 1n
+B_OUT OUT 0 V=LIMIT(V(NODE_B), V(V_NEG), V(V_POS))
+.ends ideal_opamp
